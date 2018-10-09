@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const config = require('./src/config/db');
 
 const userRoutes = require('./src/routes/user');
+const authorRoutes = require('./src/routes/author');
+const bookRoutes = require('./src/routes/book');
 
 mongoose.connect(config.DB, {
     useNewUrlParser: true
@@ -33,6 +35,8 @@ app.use((req, res, next) => {
 })
 
 app.use('/user', userRoutes);
+app.use('/book', bookRoutes);
+app.use('/author', authorRoutes);
 
 app.use('/', (req, res, next) => {
     res.status(200).json({
